@@ -42,12 +42,43 @@ inquirer
             } else {
                 console.log('README.md has been created successfully.')
             }
-        })
+        });
         console.log(answers);
-    })
+    });
 
-    function readmeMD ({appName, description, installation, usage, contribution, license, testing}) {
-        return `
-        
-        `
-    }
+function readmeMD({appName, description, installation, usage, contribution, license, testing}) {
+    return `
+    # ${appName}
+
+    ## What is This Project?
+
+    ${description}
+
+    ## Table of Contents
+
+    Explore the contents of this guide:
+
+    - [Installation](#installation)
+    - [Usage](#usage)
+    - [Credits](#credits)
+    - [License](#license)
+
+    ## Installation
+
+    ${installation}
+
+    ## Usage
+
+    ${usage}
+
+    ## Credits
+
+    ${contribution}
+
+    ## License
+
+    ${license}
+
+    ${testing}
+    `;
+}
