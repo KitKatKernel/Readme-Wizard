@@ -24,16 +24,17 @@ inquirer
             name: 'contribution',
             message: 'List your collaborators and resources (with links if possible):'
         },
-        {   type: 'input',
+        {   type: 'list',
             name: 'license',
-            message: 'What license is your application covered with?'
+            message: 'What license is your application covered with?',
+            choices: ['MIT', 'GPLv3', 'Apache 2.0', 'None']
         },
         {   type: 'input',
             name: 'testing',
             message: 'Provide examples on how to run tests with this app:'
         }
     ])
-    // 2nd Pompdorodo
+
     .then(answers => {
         const githubReadme = readmeMD(answers)
         fs.writeFile ('README.md', githubReadme, err => {
@@ -46,39 +47,57 @@ inquirer
         console.log(answers);
     });
 
+function getLicenseBadge(license) {
+    switch (license) {
+        case 'MIT':
+            return '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
+        case 'GPLv3':
+            return '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)';
+        case 'Apache 2.0':
+            return '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
+        default:
+            return '';
+    }
+}
+
 function readmeMD({appName, description, installation, usage, contribution, license, testing}) {
+    const licenseBadge = getLicenseBadge(license);
     return `
-    # ${appName}
+# ${appName}
 
-    ## What is This Project?
+${licenseBadge}
 
-    ${description}
+## What is This Project?
 
-    ## Table of Contents
+${description}
 
-    Explore the contents of this guide:
+## Table of Contents
 
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Credits](#credits)
-    - [License](#license)
+Explore the contents of this guide:
 
-    ## Installation
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
 
-    ${installation}
+## Installation
 
-    ## Usage
+${installation}
 
-    ${usage}
+## Usage
 
-    ## Credits
+${usage}
 
-    ${contribution}
+## Credits
 
-    ## License
+${contribution}
 
-    ${license}
+## License
 
-    ${testing}
-    `;
+This project is licensed under the ${license} license.
+
+## Tests
+
+${testing}
+`;
 }
