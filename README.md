@@ -3,6 +3,9 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[Watch the Demo Video](https://drive.google.com/file/d/14CCS62uMw1K_fpXbCuQo35yTqgtaMOps/view?usp=drive_link)
+
+
 ## What is This Project?
 
 An application that dynamically generates a professional README.md file based on user input using the Inquirer package.
@@ -67,4 +70,4 @@ SOFTWARE.
 
 ## Questions
 
-For any questions, please reach out to me via [GitHub](https://github.com/KitKatKernel) or email at Natecruncyroll@gmail.com.
+For any questions, please reach out to me via [GitHub](https://github.com/KitKatKernel) or email at Natecrunchyroll@gmail.com.
